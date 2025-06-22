@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferramentas Online Gratuitas Fora da Caixa</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Default: Dark mode (black, green, white) - slightly softer black */
+            background-color: #1c1c1c; /* Dark charcoal for background */
+            color: #e2e8f0; /* Light gray for general text */
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%); /* Darker to lighter emerald green */
+        }
+        .card-bg {
+            background-color: #282828; /* Slightly lighter dark gray for card background */
+            border: 1px solid #3a3a3a; /* Subtler dark border */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-bg:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+        }
+        .tool-link {
+            background-color: #047857; /* Dark emerald green for buttons */
+            color: #ffffff; /* White text on buttons */
+        }
+        .tool-link:hover {
+            background-color: #065f46; /* Even darker emerald on hover */
+        }
+        .text-custom-title {
+            color: #34D399; /* Light emerald green for titles */
+        }
+        .text-custom-description {
+            color: #cbd5e0; /* Light gray for descriptions */
+        }
+        .category-title {
+            color: #10B981; /* Medium emerald green for category titles */
+            border-bottom: 2px solid #059669; /* Dark emerald border */
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Light mode styles (activated by toggle) */
+        body.light-mode {
+            background-color: #f5f7fa; /* Very light grey-blue for light mode background */
+            color: #2d3748; /* Darker slate text for light mode */
+        }
+        body.light-mode .gradient-bg {
+            background: linear-gradient(135deg, #6EE7B7 0%, #34D399 100%); /* Lighter emerald gradient for light mode header */
+        }
+        body.light-mode .card-bg {
+            background-color: #ffffff; /* White card background in light mode */
+            border-color: #d1fae5; /* Very light green border in light mode */
+        }
+        body.light-mode .card-bg:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        body.light-mode .tool-link {
+            background-color: #10B981; /* Medium emerald for buttons in light mode */
+            color: #ffffff;
+        }
+        body.light-mode .tool-link:hover {
+            background-color: #059669; /* Darker medium emerald on hover in light mode */
+        }
+        body.light-mode .text-custom-title {
+            color: #047857; /* Dark emerald for titles in light mode */
+        }
+        body.light-mode .text-custom-description {
+            color: #4a5568; /* Darker gray for descriptions in light mode */
+        }
+        body.light-mode .category-title {
+            color: #059669; /* Dark emerald green for category titles in light mode */
+            border-bottom: 2px solid #34D399; /* Medium emerald border */
+        }
+
+        /* Toggle switch styling */
+        .toggle-switch {
+            width: 60px;
+            height: 34px;
+            background-color: #059669; /* Green for dark mode (default state) */
+            border-radius: 34px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.4s;
+        }
+        .toggle-switch .slider {
+            width: 26px;
+            height: 26px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 28px; /* Slider starts on the right for dark mode */
+            transition: transform 0.4s, left 0.4s;
+        }
+        /* State when light mode is active */
+        .toggle-switch.light-mode .slider {
+            left: 4px; /* Move to left for light mode */
+        }
+        .toggle-switch.light-mode {
+            background-color: #ccc; /* Grey for light mode */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="text-center md:text-left mb-4 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-2">Descubra Ferramentas Incríveis!</h1>
+                <p class="text-xl md:text-2xl opacity-90">Opções online gratuitas que você não conhecia.</p>
+            </div>
+            <!-- Dark Mode Toggle -->
+            <div class="flex items-center space-x-2 mt-4 md:mt-0">
+                <span class="text-lg">Modo Claro</span>
+                <div id="darkModeToggle" class="toggle-switch">
+                    <div class="slider"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div class="container mx-auto px-4 mt-8 mb-8">
+        <input type="text" id="searchInput" placeholder="Pesquisar ferramentas por nome ou função..."
+               class="w-full p-3 rounded-lg border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 bg-white text-gray-800 dark:bg-gray-700 dark:text-white dark:border-gray-600 dark:focus:ring-emerald-400 shadow-md">
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12 flex-grow">
+
+        <!-- Documentos & Edição de Texto Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Documentos & Edição de Texto</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-documentos">
+            <!-- Tool Card: Google Docs -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Docs</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie e edite documentos de texto online. Colaboração em tempo real, formatação avançada e armazenamento na nuvem.
+                    </p>
+                </div>
+                <a href="https://docs.google.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Google Docs
+                </a>
+            </div>
+
+            <!-- Tool Card: Google Sheets -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Sheets</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie e gerencie planilhas online. Ferramentas para cálculos, gráficos e colaboração em equipe.
+                    </p>
+                </div>
+                <a href="https://docs.google.com/spreadsheets/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Google Sheets
+                </a>
+            </div>
+
+            <!-- Tool Card: Google Slides -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Slides</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie apresentações de slides dinâmicas online. Modelos, animações e recursos de colaboração.
+                    </p>
+                </div>
+                <a href="https://docs.google.com/presentation/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Google Slides
+                </a>
+            </div>
+
+            <!-- Tool Card: I Love PDF -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">I Love PDF</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um conjunto de ferramentas online para todas as suas necessidades de PDF: mesclar, dividir, compactar, converter, editar e assinar PDFs.
+                    </p>
+                </div>
+                <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar I Love PDF
+                </a>
+            </div>
+
+            <!-- Tool Card: Smallpdf -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Smallpdf</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um conjunto simples de ferramentas para comprimir, converter, editar, dividir e mesclar PDFs, de forma rápida e segura.
+                    </p>
+                </div>
+                <a href="https://smallpdf.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Smallpdf
+                </a>
+            </div>
+
+            <!-- Tool Card: LibreOffice Online (Collabora Online) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">LibreOffice Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Suite de escritório online gratuita, compatível com Word, Excel, PowerPoint. Edite documentos, planilhas e apresentações diretamente no navegador.
+                    </p>
+                </div>
+                <a href="https://www.collaboraoffice.com/collabora-online/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar LibreOffice Online
+                </a>
+            </div>
+
+            <!-- Tool Card: PDF Candy -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">PDF Candy</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        47 ferramentas online para PDF: converter de/para PDF, mesclar, dividir, comprimir, proteger, girar e muito mais.
+                    </p>
+                </div>
+                <a href="https://pdfcandy.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar PDF Candy
+                </a>
+            </div>
+
+            <!-- Tool Card: DocTranslator -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DocTranslator</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Traduza documentos inteiros para vários idiomas, mantendo o formato original do arquivo.
+                    </p>
+                </div>
+                <a href="https://www.doctranslator.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DocTranslator
+                </a>
+            </div>
+
+            <!-- Tool Card: OnlineOCR -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">OnlineOCR</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Converta imagens e PDFs digitalizados em documentos editáveis (Word, Excel, texto puro) usando tecnologia OCR.
+                    </p>
+                </div>
+                <a href="https://www.onlineocr.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar OnlineOCR
+                </a>
+            </div>
+
+            <!-- Tool Card: Zamzar -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Zamzar</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Conversor de arquivos online que suporta mais de 1200 formatos, incluindo documentos, áudio, vídeo e imagens.
+                    </p>
+                </div>
+                <a href="https://www.zamzar.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Zamzar
+                </a>
+            </div>
+
+            <!-- Tool Card: Markdown Editor (online) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Markdown Editor Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Escreva e visualize documentos em Markdown em tempo real, sem necessidade de software.
+                    </p>
+                </div>
+                <a href="https://stackedit.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Markdown Editor
+                </a>
+            </div>
+
+            <!-- Tool Card: Notepad Online -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Notepad Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um bloco de notas simples e rápido para rascunhos, anotações e edição de texto puro diretamente no navegador.
+                    </p>
+                </div>
+                <a href="https://www.online-notepad.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Notepad Online
+                </a>
+            </div>
+
+            <!-- Tool Card: Zoho Docs (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Zoho Docs (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Suite de escritório online que oferece processador de texto, planilhas e apresentações, com armazenamento e colaboração.
+                    </p>
+                </div>
+                <a href="https://www.zoho.com/docs/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Zoho Docs
+                </a>
+            </div>
+
+            <!-- Tool Card: ONLYOFFICE (personal free) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ONLYOFFICE (Pessoal Gratuito)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Suíte de escritório online com editores de documentos, planilhas e apresentações, focada em segurança e compatibilidade.
+                    </p>
+                </div>
+                <a href="https://www.onlyoffice.com/personal.aspx" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ONLYOFFICE
+                </a>
+            </div>
+
+            <!-- Tool Card: Overleaf (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Overleaf (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de LaTeX online colaborativo. Perfeito para documentos acadêmicos, artigos científicos e livros com formatação profissional.
+                    </p>
+                </div>
+                <a href="https://www.overleaf.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Overleaf
+                </a>
+            </div>
+
+            <!-- Tool Card: Joplin (open source note-taking) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Joplin</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Aplicativo de notas e lista de afazeres de código aberto com sincronização em nuvem e suporte a Markdown.
+                    </p>
+                </div>
+                <a href="https://joplinapp.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Joplin
+                </a>
+            </div>
+
+            <!-- Tool Card: Standard Notes (free tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Standard Notes (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um aplicativo de notas simples, privado e criptografado de ponta a ponta. Ideal para quem valoriza a segurança.
+                    </p>
+                </div>
+                <a href="https://standardnotes.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Standard Notes
+                </a>
+            </div>
+
+            <!-- Tool Card: Foxit Reader (online PDF reader/editor, free version) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Foxit Reader Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Leia, anote e preencha formulários PDF diretamente no seu navegador com esta ferramenta online.
+                    </p>
+                </div>
+                <a href="https://www.foxit.com/pdf-editor-online/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Foxit Reader Online
+                </a>
+            </div>
+
+            <!-- Tool Card: Simplenote -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Simplenote</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um aplicativo de notas leve e focado em texto simples, com sincronização entre dispositivos.
+                    </p>
+                </div>
+                <a href="https://simplenote.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Simplenote
+                </a>
+            </div>
+
+            <!-- Tool Card: Dropbox Paper -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Dropbox Paper</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um espaço de trabalho colaborativo inteligente que reúne a criação e organização de documentos em um só lugar.
+                    </p>
+                </div>
+                <a href="https://paper.dropbox.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Dropbox Paper
+                </a>
+            </div>
+
+            <!-- Tool Card: Google Keep -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Keep</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Capture rapidamente o que está em sua mente e receba um lembrete no lugar e na hora certa. Notas, listas e áudios.
+                    </p>
+                </div>
+                <a href="https://keep.google.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Google Keep
+                </a>
+            </div>
+
+            <!-- Tool Card: Write.as -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Write.as</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma de publicação minimalista e gratuita focada em privacidade, com um editor de texto simples e sem distrações.
+                    </p>
+                </div>
+                <a href="https://write.as/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Write.as
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Nova Categoria: Desenvolvimento -->
+        <h2 class="text-3xl font-bold category-title mb-8">Desenvolvimento</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-desenvolvimento">
+            <!-- Tool Card: GitHub -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">GitHub</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        A maior plataforma de hospedagem de código-fonte e controle de versão, essencial para projetos de software colaborativos.
+                    </p>
+                </div>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar GitHub
+                </a>
+            </div>
+
+            <!-- Tool Card: GitLab -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">GitLab</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma plataforma completa para o ciclo de vida de desenvolvimento de software, incluindo controle de versão, CI/CD e segurança.
+                    </p>
+                </div>
+                <a href="https://gitlab.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar GitLab
+                </a>
+            </div>
+
+            <!-- Tool Card: Bitbucket -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Bitbucket</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Hospedagem de código para projetos que usam Git e Mercurial, com foco em equipes e integração com JIRA.
+                    </p>
+                </div>
+                <a href="https://bitbucket.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Bitbucket
+                </a>
+            </div>
+
+            <!-- Tool Card: Insomnia -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Insomnia</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Cliente de API REST, GraphQL e SOAP intuitivo para testar, organizar e documentar requisições.
+                    </p>
+                </div>
+                <a href="https://insomnia.rest/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Insomnia
+                </a>
+            </div>
+
+            <!-- Tool Card: DBeaver Community Edition -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DBeaver Community Edition</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Cliente de banco de dados universal gratuito e de código aberto para desenvolvedores, suporta MySQL, PostgreSQL, SQLite e muitos outros.
+                    </p>
+                </div>
+                <a href="https://dbeaver.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DBeaver
+                </a>
+            </div>
+
+            <!-- Tool Card: DB Fiddle -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DB Fiddle</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um playground SQL online para testar, compartilhar e depurar trechos de código SQL com diferentes bancos de dados.
+                    </p>
+                </div>
+                <a href="https://db-fiddle.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DB Fiddle
+                </a>
+            </div>
+
+            <!-- Tool Card: Netlify -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Netlify (Plano Gratuito)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma para desenvolver, implantar e hospedar sites estáticos e aplicações front-end modernas, com CDN global.
+                    </p>
+                </div>
+                <a href="https://www.netlify.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Netlify
+                </a>
+            </div>
+
+            <!-- Tool Card: Vercel -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Vercel (Plano Hobby)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma de deploy para desenvolvedores front-end, ideal para projetos React, Next.js e aplicações serverless.
+                    </p>
+                </div>
+                <a href="https://vercel.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Vercel
+                </a>
+            </div>
+
+            <!-- Tool Card: Render -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Render (Plano Gratuito)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Hospede aplicações web, APIs e bancos de dados com um plano gratuito que inclui serviços web, Postgres e Redis.
+                    </p>
+                </div>
+                <a href="https://render.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Render
+                </a>
+            </div>
+
+            <!-- Tool Card: MDN Web Docs -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">MDN Web Docs</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Recurso abrangente e autoritário para documentação de tecnologias web como HTML, CSS e JavaScript.
+                    </p>
+                </div>
+                <a href="https://developer.mozilla.org/pt-BR/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar MDN Web Docs
+                </a>
+            </div>
+
+            <!-- Tool Card: W3Schools -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">W3Schools</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Tutoriais e referências para aprender linguagens e tecnologias de desenvolvimento web, desde o básico ao avançado.
+                    </p>
+                </div>
+                <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar W3Schools
+                </a>
+            </div>
+
+            <!-- Tool Card: JSON Formatter & Validator -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">JSON Formatter & Validator</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta online para formatar, validar e visualizar dados JSON de forma legível.
+                    </p>
+                </div>
+                <a href="https://jsonformatter.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar JSON Formatter
+                </a>
+            </div>
+
+            <!-- Tool Card: Regex101 -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Regex101</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Construtor e testador de expressões regulares online, com explicação detalhada dos matches e grupos.
+                    </p>
+                </div>
+                <a href="https://regex101.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Regex101
+                </a>
+            </div>
+
+            <!-- Tool Card: ConvertCase -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ConvertCase</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta online para converter texto entre diferentes tipos de capitalização (maiúscula, minúscula, título, etc.).
+                    </p>
+                </div>
+                <a href="https://convertcase.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ConvertCase
+                </a>
+            </div>
+
+            <!-- Tool Card: Diffchecker -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Diffchecker</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Compare dois textos, imagens ou pastas para encontrar as diferenças de forma rápida e visual.
+                    </p>
+                </div>
+                <a href="https://www.diffchecker.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Diffchecker
+                </a>
+            </div>
+        </div>
+
+        <!-- Design & Imagem Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Design & Imagem</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-design-imagem">
+            <!-- Tool Card: remove.bg -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">remove.bg</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Remova o fundo de qualquer imagem em segundos, de forma 100% automática e gratuita. Perfeito para fotos de perfil, e-commerce ou apresentações.
+                    </p>
+                </div>
+                <a href="https://www.remove.bg/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar remove.bg
+                </a>
+            </div>
+
+            <!-- Tool Card: Photopea -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Photopea</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um editor de fotos e gráficos online avançado, compatível com PSD, AI, XD, Sketch, PDF, XCF e muito mais. É como ter um Photoshop gratuito no seu navegador!
+                    </p>
+                </div>
+                <a href="https://www.photopea.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Photopea
+                </a>
+            </div>
+
+            <!-- Tool Card: Excalidraw -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Excalidraw</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma lousa virtual de código aberto para diagramas com um visual de desenho à mão. Perfeito para brainstorming, wireframes ou simplesmente esboçar ideias.
+                    </p>
+                </div>
+                <a href="https://excalidraw.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Excalidraw
+                </a>
+            </div>
+
+            <!-- Tool Card: Canva (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Canva (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Simplifique o design gráfico com milhares de modelos personalizáveis para apresentações, mídias sociais, pôsteres e muito mais, mesmo sem experiência em design.
+                    </p>
+                </div>
+                <a href="https://www.canva.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Canva
+                </a>
+            </div>
+
+            <!-- Tool Card: Krita -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Krita</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de gráficos raster gratuito e de código aberto, com foco em pintura digital e ilustração. Possui uma vasta gama de pincéis e ferramentas.
+                    </p>
+                </div>
+                <a href="https://krita.org/pt/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Krita
+                </a>
+            </div>
+
+            <!-- Tool Card: GIMP -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">GIMP</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Programa de manipulação de imagens gratuito e de código aberto, uma alternativa poderosa ao Photoshop para edição de fotos e criação de imagens.
+                    </p>
+                </div>
+                <a href="https://www.gimp.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar GIMP
+                </a>
+            </div>
+
+            <!-- Tool Card: Inkscape -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Inkscape</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um editor de gráficos vetoriais gratuito e de código aberto, usado para criar ilustrações, logotipos, diagramas e ícones com base em vetores.
+                    </p>
+                </div>
+                <a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Inkscape
+                </a>
+            </div>
+
+            <!-- Tool Card: Unsplash -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Unsplash</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Biblioteca de fotos de alta resolução, gratuitas para uso comercial e pessoal. Ideal para designers, blogueiros e criadores de conteúdo.
+                    </p>
+                </div>
+                <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Unsplash
+                </a>
+            </div>
+
+            <!-- Tool Card: Pexels -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Pexels</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Fotos e vídeos gratuitos de alta qualidade que você pode usar em qualquer lugar. Uma vasta coleção para projetos criativos.
+                    </p>
+                </div>
+                <a href="https://www.pexels.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Pexels
+                </a>
+            </div>
+
+            <!-- Tool Card: Coolors.co -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Coolors.co</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerador rápido de paletas de cores para designers. Crie combinações de cores harmoniosas em segundos para seus projetos.
+                    </p>
+                </div>
+                <a href="https://coolors.co/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Coolors.co
+                </a>
+            </div>
+
+            <!-- Tool Card: Pixlr E (Editor) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Pixlr E</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de fotos online gratuito com recursos avançados como camadas, filtros e ajustes. Alternativa ao Photoshop direto no navegador.
+                    </p>
+                </div>
+                <a href="https://pixlr.com/e/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Pixlr E
+                </a>
+            </div>
+
+            <!-- Tool Card: Fotor (Photo Editor) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Fotor</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de fotos online com ferramentas de edição, efeitos, colagens e design. Ótimo para retoques rápidos e criações visuais.
+                    </p>
+                </div>
+                <a href="https://www.fotor.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Fotor
+                </a>
+            </div>
+
+            <!-- Tool Card: Iconfinder (Free Icons Section) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Iconfinder (Ícones Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Encontre milhões de ícones, incluindo uma vasta seleção gratuita para seus projetos de design, aplicativos ou sites.
+                    </p>
+                </div>
+                <a href="https://www.iconfinder.com/free_icons" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Iconfinder
+                </a>
+            </div>
+
+            <!-- Tool Card: Pikwizard (free stock photos/videos) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Pikwizard</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Biblioteca de fotos e vídeos de alta qualidade, 100% gratuitos para uso comercial e pessoal, com foco em autenticidade.
+                    </p>
+                </div>
+                <a href="https://pikwizard.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Pikwizard
+                </a>
+            </div>
+
+            <!-- Tool Card: Color Hunt -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Color Hunt</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Coleções de paletas de cores gratuitas e inspiradoras, atualizadas diariamente, para seus projetos de design.
+                    </p>
+                </div>
+                <a href="https://colorhunt.co/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Color Hunt
+                </a>
+            </div>
+
+            <!-- Tool Card: Patterninja -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Patterninja</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie padrões vetoriais personalizáveis para fundos de sites, apresentações e designs.
+                    </p>
+                </div>
+                <a href="https://patterninja.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Patterninja
+                </a>
+            </div>
+
+            <!-- Tool Card: WhatFontIs -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">WhatFontIs</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Identifique qualquer fonte de uma imagem ou site, encontrando a fonte exata ou as mais próximas.
+                    </p>
+                </div>
+                <a href="https://www.whatfontis.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar WhatFontIs
+                </a>
+            </div>
+        </div>
+
+        <!-- Produtividade & Organização Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Produtividade & Organização</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-produtividade">
+            <!-- Tool Card: tinywow.com -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">tinywow.com</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma plataforma "tudo em um" com uma infinidade de ferramentas para PDFs, vídeos, imagens, arquivos e até recursos de IA. Uma verdadeira caixa de ferramentas online!
+                    </p>
+                </div>
+                <a href="https://tinywow.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar tinywow.com
+                </a>
+            </div>
+
+            <!-- Tool Card: Notion (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Notion (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um espaço de trabalho multifuncional para notas, tarefas, gerenciamento de projetos e wikis. Organize sua vida pessoal e profissional em um só lugar.
+                    </p>
+                </div>
+                <a href="https://www.notion.so/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Notion
+                </a>
+            </div>
+
+            <!-- Tool Card: Miro (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Miro (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma lousa online colaborativa para equipes. Ideal para brainstorming, mapas mentais, fluxogramas e planejamento de projetos em tempo real.
+                    </p>
+                </div>
+                <a href="https://miro.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Miro
+                </a>
+            </div>
+
+            <!-- Tool Card: Trello (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Trello (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerencie projetos e organize tarefas de forma visual e colaborativa com quadros, listas e cartões. Perfeito para equipes ou uso pessoal.
+                    </p>
+                </div>
+                <a href="https://trello.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Trello
+                </a>
+            </div>
+
+            <!-- Tool Card: Todoist (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Todoist (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um gerenciador de tarefas simples e poderoso para organizar sua vida, aumentar sua produtividade e nunca mais esquecer nada.
+                    </p>
+                </div>
+                <a href="https://todoist.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Todoist
+                </a>
+            </div>
+
+            <!-- Tool Card: Doodle (Scheduling) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Doodle</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Simplifique a organização de reuniões e eventos. Encontre a melhor data e hora para um grupo de pessoas sem trocas infinitas de e-mails.
+                    </p>
+                </div>
+                <a href="https://doodle.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Doodle
+                </a>
+            </div>
+
+            <!-- Tool Card: Calendly (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Calendly (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Facilite o agendamento de reuniões, permitindo que as pessoas escolham horários disponíveis em sua agenda, sem idas e vindas.
+                    </p>
+                </div>
+                <a href="https://calendly.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Calendly
+                </a>
+            </div>
+
+            <!-- Tool Card: Asana (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Asana (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerencie seus projetos e tarefas com a equipe. Organize, acompanhe o progresso e colabore de forma eficaz.
+                    </p>
+                </div>
+                <a href="https://asana.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Asana
+                </a>
+            </div>
+
+            <!-- Tool Card: TickTick (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">TickTick (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um aplicativo de lista de tarefas e gerenciador de hábitos. Organize tarefas, defina lembretes e construa bons hábitos.
+                    </p>
+                </div>
+                <a href="https://ticktick.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar TickTick
+                </a>
+            </div>
+
+            <!-- Tool Card: Forest App (Free Basic) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Forest App (Grátis Básico)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Mantenha o foco plantando árvores virtuais enquanto você trabalha. Ajuda a combater o vício em smartphones.
+                    </p>
+                </div>
+                <a href="https://www.forestapp.cc/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Forest App
+                </a>
+            </div>
+
+            <!-- Tool Card: Any.do (Free Basic) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Any.do (Grátis Básico)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerenciador de tarefas e lista de afazeres com recursos de calendário, lembretes e colaboração.
+                    </p>
+                </div>
+                <a href="https://www.any.do/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Any.do
+                </a>
+            </div>
+
+            <!-- Tool Card: Pomofocus -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Pomofocus</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um cronômetro Pomodoro online e personalizável para ajudar você a manter o foco e gerenciar seu tempo de forma eficaz.
+                    </p>
+                </div>
+                <a href="https://pomofocus.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Pomofocus
+                </a>
+            </div>
+
+            <!-- Tool Card: Clockify (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Clockify (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Rastreador de tempo 100% gratuito para equipes e indivíduos. Monitore o tempo gasto em projetos e tarefas.
+                    </p>
+                </div>
+                <a href="https://clockify.me/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Clockify
+                </a>
+            </div>
+
+            <!-- Tool Card: Focusmate (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Focusmate (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Encontre um parceiro de produtividade virtual para sessões de trabalho focadas via webcam.
+                    </p>
+                </div>
+                <a href="https://www.focusmate.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Focusmate
+                </a>
+            </div>
+        </div>
+
+        <!-- Educação & Conhecimento Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Educação & Conhecimento</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-educacao">
+            <!-- Tool Card: Google Arts & Culture -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Arts & Culture</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Explore coleções de arte, artefatos e locais históricos de mais de 2.000 museus e arquivos ao redor do mundo. Uma imersão cultural sem sair de casa.
+                    </p>
+                </div>
+                <a href="https://artsandculture.google.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Google Arts & Culture
+                </a>
+            </div>
+
+            <!-- Tool Card: Wayback Machine -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Wayback Machine</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Explore versões arquivadas de bilhões de páginas da web ao longo do tempo. Veja como sites mudaram ou encontre conteúdo que desapareceu.
+                    </p>
+                </div>
+                <a href="https://archive.org/web/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Wayback Machine
+                </a>
+            </div>
+
+            <!-- Tool Card: Project Gutenberg -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Project Gutenberg</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma biblioteca de mais de 60.000 eBooks gratuitos. Livros clássicos em domínio público que você pode baixar e ler a qualquer hora.
+                    </p>
+                </div>
+                <a href="https://www.gutenberg.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Project Gutenberg
+                </a>
+            </div>
+
+            <!-- Tool Card: Zotero -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Zotero</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um gerenciador de referências gratuito e de código aberto para pesquisadores. Colete, organize, cite e compartilhe suas fontes de pesquisa.
+                    </p>
+                </div>
+                <a href="https://www.zotero.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Zotero
+                </a>
+            </div>
+
+            <!-- Tool Card: OpenStreetMap -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">OpenStreetMap</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um mapa colaborativo e de código aberto do mundo. Uma alternativa gratuita e editável ao Google Maps, construída por uma comunidade global.
+                    </p>
+                </div>
+                <a href="https://www.openstreetmap.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar OpenStreetMap
+                </a>
+            </div>
+
+            <!-- Tool Card: Coursera (Free Courses) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Coursera (Cursos Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Acesso a cursos universitários de alta qualidade de universidades e empresas líderes. Filtre por "Cursos Gratuitos" para aprender novas habilidades.
+                    </p>
+                </div>
+                <a href="https://www.coursera.org/courses?query=free" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar Coursera
+                </a>
+            </div>
+
+            <!-- Tool Card: edX (Free Courses) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">edX (Cursos Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Oferece cursos online de universidades de prestígio em todo o mundo. Muitos cursos podem ser auditados gratuitamente.
+                    </p>
+                </div>
+                <a href="https://www.edx.org/free-online-courses" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar edX
+                </a>
+            </div>
+
+            <!-- Tool Card: Khan Academy -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Khan Academy</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Educação gratuita de nível mundial para qualquer pessoa, em qualquer lugar. Abrange matemática, ciências, programação, história e muito mais.
+                    </p>
+                </div>
+                <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Khan Academy
+                </a>
+            </div>
+
+            <!-- Tool Card: Google Digital Garage -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Google Digital Garage</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Cursos gratuitos sobre habilidades digitais para o mundo do trabalho, marketing online, dados e muito mais, muitos com certificação.
+                    </p>
+                </div>
+                <a href="https://learndigital.withgoogle.com/digitalgarage/courses" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar Google Digital Garage
+                </a>
+            </div>
+
+            <!-- Tool Card: Duolingo -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Duolingo</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Aprenda um novo idioma de forma divertida e gratuita. Aulas gamificadas para mais de 40 idiomas, ideal para iniciantes.
+                    </p>
+                </div>
+                <a href="https://www.duolingo.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Duolingo
+                </a>
+            </div>
+
+            <!-- Tool Card: FreeCodeCamp -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">FreeCodeCamp</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Aprenda a programar gratuitamente. Cursos interativos e projetos para desenvolvimento web, ciência de dados e muito mais, com certificações.
+                    </p>
+                </div>
+                <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar FreeCodeCamp
+                </a>
+            </div>
+
+            <!-- Tool Card: Memrise (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Memrise (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Aprenda idiomas de forma divertida com vídeos de falantes nativos e jogos. Foco na memorização de vocabulário e frases.
+                    </p>
+                </div>
+                <a href="https://www.memrise.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Memrise
+                </a>
+            </div>
+
+            <!-- Tool Card: Codecademy (Free Basic) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Codecademy (Grátis Básico)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Cursos interativos de programação para iniciantes e avançados em diversas linguagens e tecnologias.
+                    </p>
+                </div>
+                <a href="https://www.codecademy.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Codecademy
+                </a>
+            </div>
+
+            <!-- Tool Card: MIT OpenCourseWare -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">MIT OpenCourseWare</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Materiais de cursos do MIT disponíveis gratuitamente online. Acesso a conteúdo de nível universitário em diversas áreas.
+                    </p>
+                </div>
+                <a href="https://ocw.mit.edu/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar MIT OCW
+                </a>
+            </div>
+
+            <!-- Tool Card: Stanford Online (Free Courses) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Stanford Online (Cursos Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Acesse uma seleção de cursos gratuitos da Universidade de Stanford em áreas como IA, programação, humanidades e mais.
+                    </p>
+                </div>
+                <a href="https://online.stanford.edu/free-courses" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar Stanford Online
+                </a>
+            </div>
+
+            <!-- Tool Card: FutureLearn (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">FutureLearn (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Descubra centenas de cursos online gratuitos de universidades e organizações líderes em diversas áreas do conhecimento.
+                    </p>
+                </div>
+                <a href="https://www.futurelearn.com/courses/free-online-courses" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar FutureLearn
+                </a>
+            </div>
+
+            <!-- Tool Card: Udemy (Free Courses) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Udemy (Cursos Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Encontre uma vasta gama de cursos online gratuitos, desde programação até marketing e desenvolvimento pessoal.
+                    </p>
+                </div>
+                <a href="https://www.udemy.com/courses/free/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Explorar Udemy
+                </a>
+            </div>
+
+            <!-- Tool Card: Open Culture -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Open Culture</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um diretório que agrega milhares de cursos online gratuitos, eBooks, filmes e recursos educacionais de alta qualidade.
+                    </p>
+                </div>
+                <a href="https://www.openculture.com/freeonlinecourses" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Open Culture
+                </a>
+            </div>
+
+            <!-- Tool Card: Academic Earth -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Academic Earth (Cursos Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Coleção de cursos online gratuitos de universidades de topo do mundo, cobrindo diversas disciplinas acadêmicas.
+                    </p>
+                </div>
+                <a href="https://academicearth.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Academic Earth
+                </a>
+            </div>
+        </div>
+
+        <!-- Segurança & Privacidade Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Segurança & Privacidade</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-seguranca">
+            <!-- Tool Card: ProtonMail (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ProtonMail (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Serviço de e-mail seguro e criptografado, com foco na privacidade do usuário. Uma alternativa mais segura aos serviços de e-mail tradicionais.
+                    </p>
+                </div>
+                <a href="https://proton.me/mail" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ProtonMail
+                </a>
+            </div>
+
+            <!-- Tool Card: WireGuard (Open Source VPN) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">WireGuard (VPN Open Source)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma VPN moderna e extremamente rápida. Embora exija alguma configuração, oferece segurança e desempenho superiores a muitas VPNs gratuitas.
+                    </p>
+                </div>
+                <a href="https://www.wireguard.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar WireGuard
+                </a>
+            </div>
+
+            <!-- Tool Card: GnuPG (GPG) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">GnuPG (GPG)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma ferramenta de criptografia para proteger a comunicação digital. Ideal para assinar e criptografar e-mails e arquivos.
+                    </p>
+                </div>
+                <a href="https://gnupg.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar GnuPG
+                </a>
+            </div>
+
+            <!-- Tool Card: Shodan -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Shodan</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um motor de busca para dispositivos conectados à internet. Descubra servidores, câmeras, roteadores e muito mais em todo o mundo. (Uso avançado)
+                    </p>
+                </div>
+                <a href="https://www.shodan.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Shodan
+                </a>
+            </div>
+
+            <!-- Tool Card: Have I Been Pwned? -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Have I Been Pwned?</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Verifique se seu e-mail ou número de telefone foi comprometido em violações de dados conhecidas. Mantenha-se informado sobre sua segurança online.
+                    </p>
+                </div>
+                <a href="https://haveibeenpwned.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Verificar Have I Been Pwned?
+                </a>
+            </div>
+
+            <!-- Tool Card: VirusTotal -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">VirusTotal</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Analise arquivos e URLs suspeitos para detectar malware. Agrega resultados de vários antivírus e scanners de segurança.
+                    </p>
+                </div>
+                <a href="https://www.virustotal.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar VirusTotal
+                </a>
+            </div>
+
+            <!-- Tool Card: ProtonVPN (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ProtonVPN (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Serviço de VPN seguro e gratuito para proteger sua privacidade online e acessar conteúdo restrito geograficamente.
+                    </p>
+                </div>
+                <a href="https://protonvpn.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ProtonVPN
+                </a>
+            </div>
+
+            <!-- Tool Card: Privnote -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Privnote</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie notas que se autodestroem após serem lidas, garantindo a confidencialidade de mensagens sensíveis.
+                    </p>
+                </div>
+                <a href="https://privnote.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Privnote
+                </a>
+            </div>
+
+            <!-- Tool Card: Bitwarden (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Bitwarden (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerenciador de senhas de código aberto, gratuito e seguro. Armazene e gere senhas fortes, acessíveis em todos os seus dispositivos.
+                    </p>
+                </div>
+                <a href="https://bitwarden.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Bitwarden
+                </a>
+            </div>
+
+            <!-- Tool Card: Temp-Mail -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Temp-Mail</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie endereços de e-mail temporários e descartáveis para evitar spam e proteger sua privacidade online.
+                    </p>
+                </div>
+                <a href="https://temp-mail.org/pt/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Temp-Mail
+                </a>
+            </div>
+
+            <!-- Tool Card: DuckDuckGo -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DuckDuckGo</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Motor de busca que não rastreia suas atividades, oferecendo maior privacidade online.
+                    </p>
+                </div>
+                <a href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DuckDuckGo
+                </a>
+            </div>
+
+            <!-- Tool Card: Firefox Monitor -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Firefox Monitor</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Verifique se seu e-mail foi exposto em violações de dados conhecidas e receba alertas sobre novos vazamentos.
+                    </p>
+                </div>
+                <a href="https://monitor.firefox.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Firefox Monitor
+                </a>
+            </div>
+        </div>
+
+        <!-- Multimídia & Edição Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Multimídia & Edição</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-multimidia">
+            <!-- Tool Card: Compressor.io -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Compressor.io</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Reduza o tamanho das suas imagens sem perder qualidade. Suporta formatos JPEG, PNG, GIF e SVG, ideal para otimizar sites e compartilhar arquivos mais leves.
+                    </p>
+                </div>
+                <a href="https://compressor.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Compressor.io
+                </a>
+            </div>
+
+            <!-- Tool Card: OBS Studio -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">OBS Studio</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Software livre e de código aberto para gravação de vídeo e transmissão ao vivo. Essencial para streamers, criadores de conteúdo e aulas online.
+                    </p>
+                </div>
+                <a href="https://obsproject.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar OBS Studio
+                </a>
+            </div>
+
+            <!-- Tool Card: HandBrake -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">HandBrake</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um conversor de vídeo de código aberto para praticamente qualquer formato. Comprima e converta vídeos para diversos dispositivos de forma eficiente.
+                    </p>
+                </div>
+                <a href="https://handbrake.fr/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar HandBrake
+                </a>
+            </div>
+
+            <!-- Tool Card: Audacity -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Audacity</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor e gravador de áudio digital gratuito e de código aberto. Perfeito para edição de podcasts, músicas e gravação de voz.
+                    </p>
+                </div>
+                <a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Audacity
+                </a>
+            </div>
+
+            <!-- Tool Card: DaVinci Resolve (Free Version) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DaVinci Resolve (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Software profissional de edição de vídeo, correção de cor, efeitos visuais e pós-produção de áudio. Versão gratuita muito completa para projetos ambiciosos.
+                    </p>
+                </div>
+                <a href="https://www.blackmagicdesign.com/products/davinciresolve/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DaVinci Resolve
+                </a>
+            </div>
+
+            <!-- Tool Card: Blender -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Blender</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Suite de criação 3D gratuita e de código aberto. Modelagem, escultura, animação, renderização, composição e até criação de jogos em um único pacote.
+                    </p>
+                </div>
+                <a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Blender
+                </a>
+            </div>
+
+            <!-- Tool Card: ShareX -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ShareX</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta de captura de tela e gravação de tela gratuita e de código aberto com muitas opções de upload e compartilhamento.
+                    </p>
+                </div>
+                <a href="https://getsharex.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ShareX
+                </a>
+            </div>
+
+            <!-- Tool Card: VLC Media Player -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">VLC Media Player</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um reprodutor de mídia portátil gratuito e de código aberto que reproduz quase todos os formatos de arquivo de vídeo e áudio, bem como DVDs, CDs de áudio e vários protocolos de streaming.
+                    </p>
+                </div>
+                <a href="https://www.videolan.org/vlc/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar VLC Media Player
+                </a>
+            </div>
+
+            <!-- Tool Card: Loom (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Loom (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Grave vídeos rápidos da sua tela, câmera e microfone para comunicar mensagens de forma mais eficaz e personalizada.
+                    </p>
+                </div>
+                <a href="https://www.loom.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Loom
+                </a>
+            </div>
+
+            <!-- Tool Card: Descript (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Descript (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Edite áudio e vídeo como um documento de texto. Transcreva automaticamente, remova palavras de preenchimento e edite mídias de forma intuitiva.
+                    </p>
+                </div>
+                <a href="https://www.descript.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Descript
+                </a>
+            </div>
+
+            <!-- Tool Card: Voice Changer Online -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Modificador de Voz Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Altere sua voz online com efeitos divertidos. Ótimo para brincadeiras, criação de conteúdo ou anonimato em chamadas.
+                    </p>
+                </div>
+                <a href="https://voicechanger.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Modificar Voz
+                </a>
+            </div>
+
+            <!-- Tool Card: Online Convert -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Online-Convert.com</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Converta arquivos de áudio, vídeo, imagem, documento, e-book e muito mais entre centenas de formatos diferentes.
+                    </p>
+                </div>
+                <a href="https://www.online-convert.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Online-Convert
+                </a>
+            </div>
+
+            <!-- Tool Card: Kapwing (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Kapwing (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de vídeo online para criar, editar e compartilhar vídeos rapidamente. Inclui ferramentas para legendas, recortes e muito mais.
+                    </p>
+                </div>
+                <a href="https://www.kapwing.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Kapwing
+                </a>
+            </div>
+
+            <!-- Tool Card: Mixkit -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Mixkit</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Acesse uma enorme biblioteca de clipes de vídeo, músicas, efeitos sonoros e modelos de vídeo gratuitos para seus projetos.
+                    </p>
+                </div>
+                <a href="https://mixkit.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Mixkit
+                </a>
+            </div>
+
+            <!-- Tool Card: Veed.io (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Veed.io (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de vídeo online para adicionar legendas, cortar, juntar, e aplicar efeitos. Ótimo para vídeos curtos e mídias sociais.
+                    </p>
+                </div>
+                <a href="https://www.veed.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Veed.io
+                </a>
+            </div>
+
+            <!-- Tool Card: CapCut (Online Free) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">CapCut (Online Gratuito)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Editor de vídeo completo e gratuito, popular para criação de conteúdo para redes sociais, disponível também na web.
+                    </p>
+                </div>
+                <a href="https://www.capcut.com/editor" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar CapCut Online
+                </a>
+            </div>
+
+            <!-- Tool Card: BandLab (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">BandLab (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma de criação musical online e colaborativa. Crie, grave e produza músicas com instrumentos virtuais e samples.
+                    </p>
+                </div>
+                <a href="https://www.bandlab.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar BandLab
+                </a>
+            </div>
+
+            <!-- Tool Card: Audio Joiner -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Audio Joiner</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Junte várias faixas de áudio em uma única música. Suporta a maioria dos formatos e é fácil de usar.
+                    </p>
+                </div>
+                <a href="https://audio-joiner.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Audio Joiner
+                </a>
+            </div>
+
+            <!-- Tool Card: Ezgif.com -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Ezgif.com</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um conjunto de ferramentas online para GIFs animados, incluindo criador, editor, otimizador e conversor de vídeo para GIF.
+                    </p>
+                </div>
+                <a href="https://ezgif.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Ezgif.com
+                </a>
+            </div>
+
+            <!-- Tool Card: CloudConvert -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">CloudConvert</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um conversor de arquivos online que suporta quase todos os formatos de áudio, vídeo, documento, imagem e e-book.
+                    </p>
+                </div>
+                <a href="https://cloudconvert.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar CloudConvert
+                </a>
+            </div>
+
+            <!-- Tool Card: Online Voice Recorder -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Gravador de Voz Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Grave áudio diretamente do seu microfone no navegador, corte e salve as gravações.
+                    </p>
+                </div>
+                <a href="https://online-voice-recorder.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Gravar Voz
+                </a>
+            </div>
+        </div>
+
+        <!-- IA & Produtividade Digital Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">IA & Produtividade Digital</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-ia-produtividade">
+            <!-- Tool Card: ChatGPT (free version) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">ChatGPT (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um modelo de linguagem avançado para conversas, redação, ideias e muito mais. Use-o para brainstorming, escrita criativa ou para obter informações rápidas.
+                    </p>
+                </div>
+                <a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar ChatGPT
+                </a>
+            </div>
+
+            <!-- Tool Card: Bard (Google's AI) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Bard (IA do Google)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Experimente a criatividade e a produtividade da IA do Google. Bard pode ajudar com escrita, programação, ideias e muito mais.
+                    </p>
+                </div>
+                <a href="https://bard.google.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Bard
+                </a>
+            </div>
+
+            <!-- Tool Card: Grammarly (Free Basic) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Grammarly (Grátis Básico)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Corretor gramatical e de escrita que verifica erros ortográficos, gramaticais e de pontuação em tempo real.
+                    </p>
+                </div>
+                <a href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Grammarly
+                </a>
+            </div>
+
+            <!-- Tool Card: DeepL Translate -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">DeepL Translate</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta de tradução online com foco em alta qualidade e fluidez, utilizando inteligência artificial para resultados mais naturais do que os tradutores comuns.
+                    </p>
+                </div>
+                <a href="https://www.deepl.com/translator" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar DeepL Translate
+                </a>
+            </div>
+            <!-- Tool Card: Otter.ai (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Otter.ai (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Transcreva reuniões e conversas em tempo real com IA. Perfeito para estudantes, profissionais e jornalistas.
+                    </p>
+                </div>
+                <a href="https://otter.ai/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Otter.ai
+                </a>
+            </div>
+
+            <!-- Tool Card: Hemingway Editor -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Hemingway Editor</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ajuda a tornar sua escrita mais clara e concisa, destacando frases complexas, advérbios e voz passiva.
+                    </p>
+                </div>
+                <a href="https://hemingwayapp.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Hemingway Editor
+                </a>
+            </div>
+
+            <!-- Tool Card: Gboard (Mobile Keyboard with AI) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Gboard (Teclado Móvel com IA)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Teclado do Google para smartphones com busca integrada, tradução, ditado de voz e sugestões de texto inteligente.
+                    </p>
+                </div>
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin&hl=pt_BR" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Gboard
+                </a>
+            </div>
+
+            <!-- Tool Card: Perplexity AI -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Perplexity AI</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Motor de respostas baseado em IA que fornece respostas diretas com citações de fontes, ideal para pesquisa rápida e verificada.
+                    </p>
+                </div>
+                <a href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Perplexity AI
+                </a>
+            </div>
+
+            <!-- Tool Card: Writesonic (Free Tools) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Writesonic (Ferramentas Gratuitas)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Assistente de escrita com IA para gerar artigos, descrições de produtos, anúncios e muito mais, com algumas ferramentas gratuitas.
+                    </p>
+                </div>
+                <a href="https://writesonic.com/free-tools" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Writesonic
+                </a>
+            </div>
+
+            <!-- Tool Card: Copy.ai (Free Tools) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Copy.ai (Ferramentas Gratuitas)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Gerador de conteúdo e copywriting com IA para blogs, e-mails, mídias sociais e mais, com opções gratuitas para experimentar.
+                    </p>
+                </div>
+                <a href="https://www.copy.ai/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Copy.ai
+                </a>
+            </div>
+
+            <!-- Tool Card: Poe (Various AI Bots) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Poe (Vários Bots de IA)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma para interagir com vários modelos de linguagem de IA (ChatGPT, Claude, etc.) em um só lugar.
+                    </p>
+                </div>
+                <a href="https://poe.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Poe
+                </a>
+            </div>
+
+            <!-- Tool Card: QuillBot (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">QuillBot (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta de paráfrase e resumo com IA que ajuda a reescrever frases, parágrafos e artigos, além de verificar gramática.
+                    </p>
+                </div>
+                <a href="https://quillbot.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar QuillBot
+                </a>
+            </div>
+        </div>
+
+        <!-- Desenvolvimento Web & Ferramentas Dev Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Desenvolvimento Web & Ferramentas Dev</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-dev">
+            <!-- Tool Card: CodePen -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">CodePen</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma comunidade de desenvolvimento social para desenvolvedores front-end e designers. Crie e compartilhe "pens" de HTML, CSS e JavaScript diretamente no navegador.
+                    </p>
+                </div>
+                <a href="https://codepen.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar CodePen
+                </a>
+            </div>
+
+            <!-- Tool Card: JSFiddle -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">JSFiddle</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um IDE online para testar e compartilhar trechos de código HTML, CSS e JavaScript. Perfeito para depurar e experimentar ideias rapidamente.
+                    </p>
+                </div>
+                <a href="https://jsfiddle.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar JSFiddle
+                </a>
+            </div>
+
+            <!-- Tool Card: Replit (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Replit (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Um IDE online para programar, colaborar e implantar em mais de 50 linguagens. Ideal para aprender e criar projetos rapidamente.
+                    </p>
+                </div>
+                <a href="https://replit.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Replit
+                </a>
+            </div>
+
+            <!-- Tool Card: Postman (Free Tier) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Postman (Versão Gratuita)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma para construção e uso de APIs. Envie requisições HTTP, teste endpoints e documente suas APIs.
+                    </p>
+                </div>
+                <a href="https://www.postman.com/downloads/creative-cloud/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Postman
+                </a>
+            </div>
+
+            <!-- Tool Card: vscode.dev (VS Code for Web) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">vscode.dev</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Versão web do popular editor de código Visual Studio Code. Edite arquivos e projetos diretamente no navegador.
+                    </p>
+                </div>
+                <a href="https://vscode.dev/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar vscode.dev
+                </a>
+            </div>
+
+            <!-- Tool Card: Can I use... (Browser compatibility) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Can I use...</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Verifique a compatibilidade de recursos de front-end (HTML, CSS, JavaScript) com diferentes navegadores.
+                    </p>
+                </div>
+                <a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Can I use...
+                </a>
+            </div>
+
+            <!-- Tool Card: JS Minifier -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">JS Minifier</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Comprima e otimize código JavaScript para reduzir o tamanho do arquivo e acelerar o carregamento da página.
+                    </p>
+                </div>
+                <a href="https://javascript-minifier.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Minificar JS
+                </a>
+            </div>
+
+            <!-- Tool Card: CSS Minifier -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">CSS Minifier</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Comprima e otimize arquivos CSS, removendo espaços em branco e caracteres desnecessários para reduzir o tamanho.
+                    </p>
+                </div>
+                <a href="https://cssminifier.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Minificar CSS
+                </a>
+            </div>
+        </div>
+
+        <!-- Outras Ferramentas Úteis Category -->
+        <h2 class="text-3xl font-bold category-title mb-8">Outras Ferramentas Úteis</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12" id="category-outras">
+            <!-- Tool Card: diagrams.net (formerly draw.io) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">diagrams.net</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma ferramenta online gratuita para criar diagramas de fluxo, organogramas, mapas mentais, diagramas de rede e muito mais. Funciona no navegador e pode ser integrada com nuvens.
+                    </p>
+                </div>
+                <a href="https://www.diagrams.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar diagrams.net
+                </a>
+            </div>
+
+            <!-- Tool Card: Flowchart Maker (Online) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Flowchart Maker (Online)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Crie fluxogramas, organogramas e outros diagramas online facilmente. Ideal para visualizar processos e hierarquias.
+                    </p>
+                </div>
+                <a href="https://app.diagrams.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Flowchart Maker
+                </a>
+            </div>
+
+            <!-- Tool Card: Scribus -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Scribus</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Software de código aberto para editoração eletrônica (DTP). Crie layouts profissionais para jornais, folhetos, livros e mais.
+                    </p>
+                </div>
+                <a href="https://www.scribus.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Scribus
+                </a>
+            </div>
+
+            <!-- Tool Card: Remove Watermark Online -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Remover Marca d'Água Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramentas online gratuitas que permitem remover marcas d'água de imagens ou vídeos de forma rápida e eficiente.
+                    </p>
+                </div>
+                <a href="https://www.watermarkremover.io/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Remover Marca d'Água
+                </a>
+            </div>
+
+            <!-- Tool Card: Jitsi Meet -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Jitsi Meet</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Plataforma de videoconferência de código aberto, gratuita e segura. Crie e participe de reuniões sem a necessidade de contas ou downloads.
+                    </p>
+                </div>
+                <a href="https://meet.jit.si/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Jitsi Meet
+                </a>
+            </div>
+
+            <!-- Tool Card: CryptPad -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">CryptPad</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Uma suite colaborativa para criar documentos e planilhas, com criptografia de ponta a ponta. Sua privacidade é garantida.
+                    </p>
+                </div>
+                <a href="https://cryptpad.fr/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar CryptPad
+                </a>
+            </div>
+            <!-- Tool Card: Font Awesome (Free Icons) -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Font Awesome (Ícones Gratuitos)</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Encontre milhares de ícones vetoriais personalizáveis para seus projetos web, de design ou de aplicativos.
+                    </p>
+                </div>
+                <a href="https://fontawesome.com/free" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Font Awesome
+                </a>
+            </div>
+
+            <!-- Tool Card: Squoosh -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Squoosh</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Ferramenta online do Google para otimizar imagens, reduzindo o tamanho dos arquivos sem comprometer a qualidade visual.
+                    </p>
+                </div>
+                <a href="https://squoosh.app/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar Squoosh
+                </a>
+            </div>
+
+            <!-- Tool Card: World Time Buddy -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">World Time Buddy</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Compare horários de várias cidades e fusos horários, ideal para agendar reuniões internacionais.
+                    </p>
+                </div>
+                <a href="https://www.worldtimebuddy.com/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Visitar World Time Buddy
+                </a>
+            </div>
+
+            <!-- Tool Card: Random Name Picker -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Sorteador de Nomes</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Escolha um nome aleatoriamente de uma lista, perfeito para sorteios, decisões ou jogos.
+                    </p>
+                </div>
+                <a href="https://www.randomnamepicker.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Sortear Nome
+                </a>
+            </div>
+
+            <!-- Tool Card: Unit Converter Online -->
+            <div class="card-bg p-6 rounded-2xl shadow-xl flex flex-col justify-between tool-card">
+                <div>
+                    <h2 class="text-2xl font-semibold text-custom-title mb-3 text-center">Conversor de Unidades Online</h2>
+                    <p class="text-custom-description leading-relaxed mb-4">
+                        Converta rapidamente entre diferentes unidades de medida (comprimento, peso, temperatura, volume e mais).
+                    </p>
+                </div>
+                <a href="https://www.unitconverters.net/" target="_blank" rel="noopener noreferrer"
+                   class="inline-block tool-link text-white font-medium py-3 px-6 rounded-lg text-center text-lg shadow-md hover:shadow-lg transition-all duration-300">
+                    Converter Unidades
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Ferramentas Fora da Caixa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            const searchInput = document.getElementById('searchInput');
+            const toolCards = document.querySelectorAll('.tool-card'); // Select all tool cards
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            // Default to dark mode if no preference or 'dark' is saved
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                darkModeToggle.classList.add('light-mode');
+            } else {
+                body.classList.remove('light-mode');
+                darkModeToggle.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark'); // Explicitly set default to dark
+            }
+
+            darkModeToggle.addEventListener('click', () => {
+                const isLightMode = body.classList.contains('light-mode');
+                if (isLightMode) {
+                    body.classList.remove('light-mode');
+                    darkModeToggle.classList.remove('light-mode');
+                    localStorage.setItem('theme', 'dark'); // Switch to dark
+                } else {
+                    body.classList.add('light-mode');
+                    darkModeToggle.classList.add('light-mode');
+                    localStorage.setItem('theme', 'light'); // Switch to light
+                }
+            });
+
+            // Search functionality
+            searchInput.addEventListener('keyup', (event) => {
+                const searchTerm = event.target.value.toLowerCase();
+
+                toolCards.forEach(card => {
+                    const title = card.querySelector('h2').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'flex'; // Show the card
+                    } else {
+                        card.style.display = 'none'; // Hide the card
+                    }
+                });
+
+                // Hide category titles if all cards in a category are hidden
+                const categories = document.querySelectorAll('.category-title');
+                categories.forEach(categoryTitle => {
+                    const categoryDiv = categoryTitle.nextElementSibling; // The div containing the cards
+                    if (categoryDiv && categoryDiv.classList.contains('grid')) {
+                        const visibleCards = Array.from(categoryDiv.querySelectorAll('.tool-card')).filter(card => card.style.display !== 'none');
+                        if (visibleCards.length === 0 && searchTerm !== '') {
+                            categoryTitle.style.display = 'none'; // Hide category title if no visible cards
+                        } else {
+                            categoryTitle.style.display = 'block'; // Show category title if there are visible cards or search is empty
+                        }
+                    }
+                });
+
+                // Show all categories and cards if search term is empty
+                if (searchTerm === '') {
+                    toolCards.forEach(card => card.style.display = 'flex');
+                    categories.forEach(categoryTitle => categoryTitle.style.display = 'block');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
